@@ -35,11 +35,11 @@ transform-style: preserve-3d;
 transform: rotateY(180deg);
 }
 
-.card:hover .back-face { /*mostra a parte de tras*/
+.efeito-back-face { /*mostra a parte de tras*/
 transform: rotateY(0deg);
 }
 
-.card:hover .front-face { /* sem esse pedaço, a parte de tras se sobrepoe a de cima*/
+.efeito-front-face { /* sem esse pedaço, a parte de tras se sobrepoe a de cima*/
 transform: rotateY(-180deg);
 }
 
@@ -68,4 +68,8 @@ h1{
     align-items: center;
     padding-left: 300px;
     padding-right: 300px;
+}
+
+.escondido{
+    display: none;
 }

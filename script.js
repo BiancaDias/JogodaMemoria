@@ -8,16 +8,9 @@ const array = document.querySelectorAll('.card');
 
 const baralho = [];
 
-for(let i =0; i<cartas; i++)
-{
-    baralho.push(array[i]);
-}
+const imagens = ['bobrossparrot.gif','bobrossparrot.gif','explodyparrot.gif','explodyparrot.gif','fiestaparrot.gif','fiestaparrot.gif','metalparrot.gif','metalparrot.gif','revertitparrot.gif','revertitparrot.gif','tripletsparrot.gif','tripletsparrot.gif','unicornparrot.gif','unicornparrot.gif'];
+criaCartas()
 
-baralho.sort(comparador);
-
-console.log(baralho);
-
-baralho.forEach(exibirNoTabuleiro);
 
 function virar(carta){
     const frente = carta.firstChild;
@@ -31,6 +24,17 @@ function comparador() {
 	return Math.random() - 0.5; 
 }
 
-function exibirNoTabuleiro(carta, posicao){
-    carta.classList.remove('escondido');
+
+function criaCartas(){
+    let tabuleiro = document.querySelector('.tabuleiro');
+    for(let i=0; i<cartas;i++){
+        baralho.push( `<div data-test="card" onclick="virar(this)" class="card"><div class="front-face face"><img data-test="face-down-image" src = "projeto__parrots__imagens/Arquivos Úteis - Projeto 04 - Parrot Card Game/back.png"></div><div class="back-face face">
+        <img data-test="face-up-image" src="projeto__parrots__imagens/Arquivos Úteis - Projeto 04 - Parrot Card Game/${imagens[i]}"></div></div>`);
+    }
+
+    baralho.sort(comparador);
+
+    for(let i=0;i<cartas; i++){
+        tabuleiro.innerHTML += baralho[i];
+    }
 }

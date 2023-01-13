@@ -4,8 +4,6 @@ while((cartas < 4 || cartas >14) || (cartas%2!=0)){
     cartas = prompt("Insira o número de cartas que deseja para jogar");
 }
 
-const array = document.querySelectorAll('.card');
-
 const baralho = [];
 
 const imagens = ['bobrossparrot.gif','bobrossparrot.gif','explodyparrot.gif','explodyparrot.gif','fiestaparrot.gif','fiestaparrot.gif','metalparrot.gif','metalparrot.gif','revertitparrot.gif','revertitparrot.gif','tripletsparrot.gif','tripletsparrot.gif','unicornparrot.gif','unicornparrot.gif'];
@@ -13,17 +11,42 @@ criaCartas()
 
 
 function virar(carta){
+    const cartaVirada = document.querySelector('.temporaria');
+    carta.classList.add('temporaria');
+    console.log(cartaVirada);
     const frente = carta.firstChild;
-    console.log(frente);
-    frente.classList.toggle('efeito-front-face');
     const verso = carta.lastChild;
-    verso.classList.toggle('efeito-back-face');
+    
+    frente.classList.add('efeito-front-face');
+    verso.classList.add('efeito-back-face');
+
+    if(cartaVirada !== null){ //se já tem carta desvirada
+        console.log(carta);
+            console.log(cartaVirada);
+        if(cartaVirada.innerHTML == carta.innerHTML){
+            cartaVirada.classList.remove('temporaria');
+            carta.classList.remove('temporaria');
+        }
+        else{
+            setTimeout(desvirar, 1000, carta);
+            setTimeout(desvirar, 1000, cartaVirada);
+        }
+    }
+        
 }
+
+function desvirar(carta){
+        let frente = carta.firstChild;
+        let verso = carta.lastChild;
+        frente.classList.remove('efeito-front-face');
+        verso.classList.remove('efeito-back-face');
+        carta.classList.remove('temporaria');
+}    
+
 
 function comparador() { 
 	return Math.random() - 0.5; 
 }
-
 
 function criaCartas(){
     let tabuleiro = document.querySelector('.tabuleiro');

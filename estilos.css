@@ -7,6 +7,7 @@ body{
    display: flex;
    flex-direction: column;
    align-items: center;
+   width: 100%;
 }
 
 .card {
@@ -60,6 +61,7 @@ h1{
 }
 
 .tabuleiro{
+    /*
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -67,5 +69,53 @@ h1{
     justify-content: space-between;
     align-items: center;
     padding-left: 300px;
-    padding-right: 300px;
+    padding-right: 300px;*/
+    display: grid;
+}
+
+.tamanho4{
+    grid-template-rows: 70vh 70bh; /*linhas*/
+    grid-template-columns: 1fr 1fr; /*colunas*/
+}
+
+.tamanho6{
+    grid-template-rows: 70vh 70bh; /*linhas*/
+    grid-template-columns: 1fr 1fr 1fr; /*colunas*/
+}
+
+.tamanho8{
+    grid-template-rows: 70vh 70bh; /*linhas*/
+    grid-template-columns: 1fr 1fr 1fr 1fr; /*colunas*/
+}
+
+.tamanho10{
+    grid-template-rows: 70vh 70bh; /*linhas*/
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /*colunas*/
+}
+
+.tamanho12{
+    grid-template-rows: 70vh 70bh; /*linhas*/
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /*colunas*/
+}
+
+.tamanho14{
+    grid-template-rows: 70vh 70bh; /*linhas*/
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;/*colunas*/
+}
+.desabilita-clique{
+    pointer-events: none;
+}
+
+@media (max-width: 614px){
+    .tabuleiro{
+        grid-template-rows: 70vh 70bh; /*linhas*/
+        grid-template-columns: 1fr ;
+    }
+
+    h1{
+        width: 312px;
+        font-size: 36px;
+        line-height: 42px;
+        text-align: center;
+    }
 }

@@ -11,7 +11,7 @@ const baralho = [];
 const imagens = ['bobrossparrot.gif','bobrossparrot.gif','explodyparrot.gif','explodyparrot.gif','fiestaparrot.gif','fiestaparrot.gif','metalparrot.gif','metalparrot.gif','revertitparrot.gif','revertitparrot.gif','tripletsparrot.gif','tripletsparrot.gif','unicornparrot.gif','unicornparrot.gif'];
 criaCartas()
 let paraCliques = document.querySelector('.tabuleiro');
-
+//seleciona o layout do tabuleiro
 if(cartas==4){
     paraCliques.classList.add('tamanho4');
 }
@@ -29,6 +29,15 @@ if(cartas==12){
 }
 if(cartas==14){
     paraCliques.classList.add('tamanho14');
+}
+//cronometro de tempo de jogo
+let cronometro = 0;
+let idInterval = setInterval(conta, 1000);
+
+function conta(){
+    cronometro++;
+    document.querySelector(".temporizador").innerHTML = cronometro;
+    
 }
 //criar um vetor com toda a class list certa
 //se o tamanho desse vetor for igual a ao numero de cartas, o jogo terminou
@@ -102,7 +111,21 @@ function fimDeJogo(){
 
     if(acertos.length==cartas)
     {
-        alert(`você ganhou em ${contador} jogadas!`);
+        clearInterval(idInterval);
+        alert(`você ganhou em ${contador} jogadas! A duração do jogo foi de ${cronometro} segundos`);
+
+        let reinicio = "";
+        while(reinicio!=="não" || reinicio!=="sim"){
+            reinicio = prompt("Deseja reiniciar o jogo? Favor digitar sim ou não. Qualquer outra resposta não irá prosseguir.")
+            if(reinicio === "não" || reinicio === "sim"){
+                break;
+            }
+        }
+
+        if(reinicio == "sim"){
+            alert("O jogo será reiniciado!");
+            location.reload();
+        }
         
     }
 }
